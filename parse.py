@@ -5,18 +5,13 @@ import json
 from typing import Union
 
 
-def get_object(path):
-    """
-    """
-    file = open(path, 'r', encoding='utf-8')
-    data = json.load(file)
-    return data
-
-
 def parse_json(data: Union[list, dict]):
     """
     This function parses two types of json files - dict and list.
     """
+    if not isinstance(data, list) and not isinstance(data, dict):
+        print("Looks like your object is not a list or a dictionary. Here`s it:")
+        print(data)
     lst = []
     if isinstance(data, dict):
         print("The object you got is a dictionary.")
@@ -66,3 +61,26 @@ def parse_json(data: Union[list, dict]):
             print("Looks like this key has no value...")
         else:
             print(f'The "{key}" field value is "{res[key]}"')
+
+
+def get_object(path):
+    """
+    This function takes a path to a .json file and returns a json object.
+    """
+    file = open(path, 'r', encoding='utf-8')
+    data = json.load(file)
+    return data
+
+
+def main():
+    """
+    This function takes a path to a .json file and returns a json object.
+    """
+    print("Hi there. Please enter a path to a file with object\
+ you would like to parse: ", end=" ")
+    path = str(input())
+    data = get_object(path)
+    parse_json(data)
+
+
+main()
