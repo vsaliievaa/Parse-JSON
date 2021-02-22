@@ -5,7 +5,7 @@ import json
 from typing import Union
 
 
-def parse_json(data: Union[list, dict]):
+def parse_json(data: Union[list, dict]) -> str:
     """
     This function parses two types of json files - dict and list.
     """
@@ -63,7 +63,7 @@ def parse_json(data: Union[list, dict]):
             print(f'The "{key}" field value is "{res[key]}"')
 
 
-def get_object(path):
+def get_object(path: str) -> Union[list, dict]:
     """
     This function takes a path to a .json file and returns a json object.
     """
@@ -81,6 +81,3 @@ def main():
     path = str(input())
     data = get_object(path)
     parse_json(data)
-
-
-main()
